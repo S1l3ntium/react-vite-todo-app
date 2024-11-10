@@ -1,0 +1,9 @@
+// src/styles/TodoList.scss
+@import "./mixins", "./variables";
+
+.todo-list {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+  max-width: 400px;
+}
