@@ -1,6 +1,14 @@
 // src/styles/_variables.scss
-$primary-color: #4a90e2;
-$secondary-color: #50e3c2;
-$text-color: #333;
-$background-color: #f9f9f9;
-$completed-color: #999;
+$primary-color: #5d2e8c;         // темный пурпурно-фиолетовый, основной цвет
+$secondary-color: #2e1a47;       // глубокий темный фиолетовый, акцентный цвет
+$text-color: #1b141c;            // светло-фиолетовый для текста, для лучшей читабельности
+$title-color: #fff;            // светло-фиолетовый для текста, для лучшей читабельности
+$background-color: #1c1c28;      // темно-серый с фиолетовым подтоном, для фона
+$completed-color: #3e3a4f;       // приглушенный фиолетово-серый, для завершенных задач
+
+// Цвета кнопок
+$delete-button-color: #d32f2f;    // красный для кнопки удаления
+$edit-button-color: #4a88da;      // теплый оранжевый для кнопки редактирования
+$completed-button-color: #4caf50; // зеленый для кнопки "выполнено"
+$incomplete-button-color: #f57c00; // оранжевый для кнопки "не выполнено"
+$text-button-color: #ffffff;      // белый текст для кнопок

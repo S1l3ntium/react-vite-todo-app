@@ -14,11 +14,14 @@ function TodoList() {
     });
 
     return (
-        <ul>
-            {filteredTodos.map(todo => (
-
-                <TodoItem key={todo.id} todo={todo} />
-            ))}
+        <ul className="todo-list">
+            {filteredTodos.length > 0 ? (
+                filteredTodos.map(todo => (
+                    <TodoItem key={todo.id} todo={todo}/>
+                ))
+            ) : (
+                <li className="no-tasks">Нет задач по этому фильтру</li>
+            )}
         </ul>
     );
 }

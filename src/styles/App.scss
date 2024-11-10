@@ -1,16 +1,19 @@
 // src/styles/App.scss
-@import "./mixins", "./variables";
+@use "./variables";
+@use "./fonts";
 
 .App {
+  width: 80dvw;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  background-color: $background-color;
-  color: $text-color;
-
+  gap: 20px;
+  background-color: variables.$secondary-color;
+  color: variables.$text-color;
+  border-radius: 5px;
   h1 {
-    color: $primary-color;
+    color: variables.$title-color;
     margin-bottom: 20px;
   }
 }

@@ -38,13 +38,14 @@ To-Do приложение создано с использованием **Reac
     │   ├── store/                 
     │   │   └── store.js            
     │   ├── styles/                
-    │   │   ├── _variables.scss     # Переменные для SCSS
-    │   │   ├── _mixins.scss        # Миксины для компонентов
-    │   │   ├── App.scss            # Основные стили
-    │   │   ├── TodoForm.scss       # Стили TodoForm
-    │   │   ├── TodoList.scss       # Стили TodoList
-    │   │   ├── TodoItem.scss       # Стили TodoItem
-    │   │   └── FilterButtons.scss  # Стили FilterButtons
+    │   │   ├── _fonts.scss
+    │   │   ├── _variables.scss
+    │   │   ├── _mixins.scss
+    │   │   ├── App.scss
+    │   │   ├── TodoForm.scss
+    │   │   ├── TodoList.scss
+    │   │   ├── TodoItem.scss
+    │   │   └── FilterButtons.scss
     │   ├── main.jsx                
     │   └── utils/                 
     │       └── localStorageUtils.js
@@ -60,13 +61,13 @@ To-Do приложение создано с использованием **Reac
 
 Склонируйте репозиторий с помощью команды:
 
-    git clone <URL репозитория> 
+    git clone https://github.com/S1l3ntium/react-vite-todo-app.git 
 
 ### 2. Установка зависимостей
 
 Перейдите в папку проекта и установите все необходимые зависимости:
 
-    cd todo-app
+    cd react-vite-todo-app
 
     npm install 
 
@@ -113,9 +114,3 @@ To-Do приложение создано с использованием **Reac
 -   **_variables.scss** — хранит переменные для стилей, такие как основные цвета и отступы.
 -   **_mixins.scss** — содержит миксины для переиспользования часто используемых CSS-паттернов.
 -   **App.scss, TodoForm.scss и другие** — индивидуальные SCSS-файлы для каждого компонента.
-
-## Возможные улучшения
-
--   Добавление категорий для задач.
--   Возможность установки сроков выполнения задач.
--   Напоминания о предстоящих задачах.

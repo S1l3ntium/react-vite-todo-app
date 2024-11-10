@@ -1,13 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { saveToLocalStorage, loadFromLocalStorage } from '../utils/localStorageUtils';
 
-// Инициализация начального состояния
 const initialState = {
-    todos: loadFromLocalStorage(), // Загружаем данные из localStorage при запуске
+    todos: loadFromLocalStorage(),
     filter: 'all'
 };
 
-// Функция для генерации уникального id (можно заменить на более сложную, если потребуется)
 const generateId = () => Date.now() + '_' + Math.random().toString(36).substr(2, 9);
 
 const todoSlice = createSlice({
@@ -15,24 +13,23 @@ const todoSlice = createSlice({
     initialState,
     reducers: {
         addTodo: (state, action) => {
-            // Создаем новый объект todo
             const newTodo = {
                 id: generateId(),
                 text: action.payload,
                 completed: false
             };
-            state.todos.push(newTodo); // Добавляем новый todo в массив
+            state.todos.push(newTodo);
             saveToLocalStorage(state.todos);
         },
         toggleTodo: (state, action) => {
             const todo = state.todos.find(todo => todo.id === action.payload);
             if (todo) {
                 todo.completed = !todo.completed;
-                saveToLocalStorage(state.todos); // Сохраняем изменения
+                saveToLocalStorage(state.todos);
             }
         },
         removeTodo: (state, action) => {
-            state.todos = state.todos.filter(todo => todo.id !== action.payload); // Удаляем по id
+            state.todos = state.todos.filter(todo => todo.id !== action.payload);
             saveToLocalStorage(state.todos);
         },
         editTodo: (state, action) => {
@@ -40,7 +37,7 @@ const todoSlice = createSlice({
             const todo = state.todos.find(todo => todo.id === id);
             if (todo) {
                 todo.text = text;
-                saveToLocalStorage(state.todos); // Сохраняем изменения
+                saveToLocalStorage(state.todos);
             }
         },
         setFilter: (state, action) => {

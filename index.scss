@@ -1,5 +1,7 @@
 // src/index.scss
-@import '/src/styles/App';
-@import '/src/styles/TodoForm';
-@import '/src/styles/TodoList';
-@import '/src/styles/TodoItem';
+@forward '/src/styles/Base';
+@forward '/src/styles/App';
+@forward '/src/styles/FilterButtons';
+@forward '/src/styles/TodoForm';
+@forward '/src/styles/TodoList';
+@forward '/src/styles/TodoItem';

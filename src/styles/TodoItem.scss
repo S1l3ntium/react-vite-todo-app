@@ -1,37 +1,107 @@
 // src/styles/TodoItem.scss
-@import "./mixins", "./variables";
+@use "./variables";
+@use "./fonts";
 
 .todo-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-direction: row;
+  gap: 10px;
   padding: 10px;
   border: 1px solid #ddd;
-  border-radius: 4px;
-  margin-bottom: 10px;
+  border-radius: 5px;
   background-color: white;
+
+  input {
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    font-family: "Comfortaa", sans-serif;
+    display: flex;
+    padding: 4px 8px;
+  }
 
   span {
     cursor: pointer;
     text-decoration: none;
-    color: $text-color;
+    color: variables.$text-color;
 
     &.completed {
-      color: $completed-color;
+      color: variables.$completed-color;
       text-decoration: line-through;
     }
   }
-
   button {
-    background-color: $secondary-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: none;
-    color: white;
-    padding: 4px 8px;
+    color: variables.$primary-color;
+    padding: 8px 8px;
     border-radius: 4px;
+    width: 30px;
+    height: 30px;
     cursor: pointer;
+    background-color: variables.$primary-color;
+    color: #fff;
+    font-family: "Comfortaa", sans-serif;
+  }
 
-    &:hover {
-      background-color: darken($secondary-color, 10%);
+  .buttons{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      color: variables.$text-button-color;
+      padding: 8px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all .3s ease-in-out;
+      font-size: 14px;
+      height: 30px;
+      width: 30px;
+
+      &.status {
+        padding: 4px;
+        border-radius: 2px;
+        height: 20px;
+        width: 20px;
+        color: variables.$primary-color;
+        background-color: variables.$primary-color;
+
+        &:hover {
+          background-color: none;
+        }
+      };
+
+      &.completed {
+        background-color: variables.$completed-button-color;
+      };
+
+      &.incomplete {
+        background-color: variables.$incomplete-button-color;
+      }
+
+      &.edit {
+        background-color: variables.$edit-button-color;
+      }
+
+      &.delete {
+        background-color: variables.$delete-button-color;
+      }
+
+      &:hover {
+        background-color: variables.$secondary-color;
+      }
     }
   }
+
 }

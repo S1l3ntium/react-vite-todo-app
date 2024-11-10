@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { toggleTodo, removeTodo, editTodo } from '../features/todoSlice.js';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDeleteLeft, faEdit, faSave, faCheck, faSquare } from "@fortawesome/free-solid-svg-icons";
 import '../styles/TodoItem.scss';
 
 function TodoItem({ todo }) {
@@ -18,13 +20,24 @@ function TodoItem({ todo }) {
 
     return (
         <li className="todo-item">
+            {/* Кнопка для переключения состояния выполнения */}
+            <button
+                className="status"
+                title={todo.completed ? 'Не выполнено' : 'Выполнено'}
+                onClick={() => dispatch(toggleTodo(todo.id))}
+            >
+                {todo.completed ? (
+                    <><FontAwesomeIcon icon={faCheck} /></>
+                ) : (
+                    <><FontAwesomeIcon icon={faSquare} /></>
+                )}
+            </button>
             {isEditing && !todo.completed ? (
                 // Если в режиме редактирования и задача не завершена, показываем input
                 <input
                     type="text"
                     value={editedText}
                     onChange={(e) => setEditedText(e.target.value)}
-                    onBlur={handleSave} // Сохраняем при потере фокуса
                     autoFocus // Автоматически фокусируем на input при редактировании
                 />
             ) : (
@@ -36,26 +49,31 @@ function TodoItem({ todo }) {
                     {todo.text}
                 </span>
             )}
-            <div>
-                <button onClick={() => dispatch(toggleTodo(todo.id))}>
-                    {todo.completed ? 'Undo' : 'Complete'}
-                </button>
-                <button
-                    onClick={() => {
-                        if (!todo.completed) { // Проверка, можно ли редактировать
+            <div className="buttons">
+                {/* Кнопка для редактирования или сохранения */}
+                {!todo.completed && (
+                    <button
+                        className={isEditing ? 'save' : 'edit'}
+                        title={isEditing ? 'Сохранить' : 'Редактировать'}
+                        onClick={() => {
                             if (isEditing) {
                                 handleSave();
                             } else {
                                 setIsEditing(true);
                             }
-                        }
-                    }}
-                    disabled={todo.completed} // Отключаем кнопку, если задача завершена
-                >
-                    {isEditing ? 'Save' : 'Edit'}
-                </button>
-                <button onClick={() => dispatch(removeTodo(todo.id))}>
-                    Delete
+                        }}
+                    >
+                        {isEditing ? (
+                            <><FontAwesomeIcon icon={faSave} /></>
+                        ) : (
+                            <><FontAwesomeIcon icon={faEdit} /></>
+                        )}
+                    </button>
+                )}
+
+                {/* Кнопка для удаления */}
+                <button className="delete" onClick={() => dispatch(removeTodo(todo.id))} title="Удалить">
+                    <FontAwesomeIcon icon={faDeleteLeft} />
                 </button>
             </div>
         </li>

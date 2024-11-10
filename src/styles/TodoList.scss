@@ -1,9 +1,21 @@
 // src/styles/TodoList.scss
-@import "./mixins", "./variables";
+@use "./variables";
+@use "./fonts";
 
 .todo-list {
+  display: flex;
+  flex-direction: column;
   list-style-type: none;
   padding: 0;
+  margin: 0;
   width: 100%;
-  max-width: 400px;
+  gap: 10px;
+
+  .no-tasks {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #fff;
+  }
 }

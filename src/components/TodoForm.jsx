@@ -16,14 +16,15 @@ function TodoForm() {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="todo-form" onSubmit={handleSubmit}>
             <input
                 type="text"
-                placeholder="Add a task"
+                placeholder="Напишите текст задачи..."
                 value={text}
                 onChange={(e) => setText(e.target.value)}
             />
-            <button type="submit">Add</button>
+
+            <button type="submit">Создать задачу</button>
         </form>
     );
 }
