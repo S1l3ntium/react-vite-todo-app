@@ -1,9 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { saveToLocalStorage, loadFromLocalStorage } from '../utils/localStorageUtils';
+import formatDate from "../utils/formatDate";
 
 const initialState = {
     todos: loadFromLocalStorage(),
-    filter: 'all'
+    filter: 'all',
+    deletedTodos: []
 };
 
 const generateId = () => Date.now() + '_' + Math.random().toString(36).substr(2, 9);
@@ -13,9 +15,14 @@ const todoSlice = createSlice({
     initialState,
     reducers: {
         addTodo: (state, action) => {
+            const { text, description, startDate, endDate } = action.payload;
+            console.log('Adding todo:', { text, description, startDate, endDate });
             const newTodo = {
                 id: generateId(),
-                text: action.payload,
+                text,
+                description,
+                startDate: formatDate(startDate),
+                endDate: formatDate(endDate),
                 completed: false
             };
             state.todos.push(newTodo);
@@ -33,11 +40,14 @@ const todoSlice = createSlice({
             saveToLocalStorage(state.todos);
         },
         editTodo: (state, action) => {
-            const { id, text } = action.payload;
+            const { id, text, description, startDate, endDate } = action.payload;
             const todo = state.todos.find(todo => todo.id === id);
             if (todo) {
                 todo.text = text;
-                saveToLocalStorage(state.todos);
+                todo.description = description;
+                todo.startDate = startDate;
+                todo.endDate = endDate;
+                saveToLocalStorage(state.todos); // Сохраняем изменения в LocalStorage
             }
         },
         setFilter: (state, action) => {

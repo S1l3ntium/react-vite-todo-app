@@ -5,13 +5,24 @@ import '../styles/TodoForm.scss';
 
 function TodoForm() {
     const [text, setText] = useState('');
+    const [description, setDescription] = useState('');
+    const [startDate, setStartDate] = useState('');
+    const [endDate, setEndDate] = useState('');
     const dispatch = useDispatch();
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (text.trim()) {
-            dispatch(addTodo(text));
+            dispatch(addTodo({
+                text,
+                description,
+                startDate,
+                endDate
+            }));
             setText('');
+            setDescription('');
+            setStartDate('');
+            setEndDate('');
         }
     };
 
@@ -23,7 +34,21 @@ function TodoForm() {
                 value={text}
                 onChange={(e) => setText(e.target.value)}
             />
-
+            <textarea
+                placeholder="Описание задачи..."
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+            />
+            <input
+                type="date"
+                value={startDate}
+                onChange={(e) => setStartDate(e.target.value)}
+            />
+            <input
+                type="date"
+                value={endDate}
+                onChange={(e) => setEndDate(e.target.value)}
+            />
             <button type="submit">Создать задачу</button>
         </form>
     );
